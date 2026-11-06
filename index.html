@@ -1,0 +1,1430 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>การศึกษาความสัมพันธ์ระหว่างการใช้ AI กับผลสัมฤทธิ์ทางการเรียน | Group 45 มทส.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/chart.umd.min.js"></script>
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="header-nav">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" data-target-view="landing">
+        <span class="brand-badge">GROUP 45</span>
+        <div class="brand-text">
+          <h1>SUT AI & Academic Achievement</h1>
+          <p>การศึกษาความสัมพันธ์การใช้ AI กับผลสัมฤทธิ์ทางการเรียน มทส.</p>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a class="nav-link active" data-target-view="landing">หน้าแรก</a></li>
+        <li><a class="nav-link highlight" data-target-view="dashboard" data-target-tab="overview">★ Dashboard</a></li>
+        <li><a class="nav-link" data-target-view="analysis">สถิติเชิงลึก</a></li>
+        <li><a class="nav-link" data-target-view="insights">Insight</a></li>
+        <li><a class="nav-link" data-target-view="recommendations">ข้อเสนอแนะ</a></li>
+        <li><a class="nav-link" data-target-view="contribute">แบบสอบถาม </a></li>
+        <li><a class="nav-link" data-target-view="about">ที่มาโครงการ</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+
+    <!-- VIEW 1: LANDING -->
+    <section id="view-landing" class="page-view active-view">
+      <div class="hero-section">
+        <div class="hero-tag">โครงงานวิจัยนักศึกษามหาวิทยาลัยเทคโนโลยีสุรนารี (SUT)</div>
+        <h2 class="hero-title">การศึกษาความสัมพันธ์ระหว่างการใช้ <span>Generative AI</span> กับผลสัมฤทธิ์ทางการเรียน</h2>
+        <p class="hero-desc">
+          การประยุกต์ใช้สถิติเพื่อเจาะลึกพฤติกรรมการใช้ AI ของนักศึกษา นำเสนอผ่าน Dasboard สำรวจข้อมูลเพื่อหาความสัมพันธ์กับผลสัมฤทธิ์ทางการเรียน และข้อเสนอแนะสำหรับการปรับกระบวนการเรียนรู้ในยุคดิจิทัล
+        </p>
+        <div class="hero-cta">
+          <button class="btn btn-primary" data-target-view="dashboard" data-target-tab="overview">
+            สำรวจ Dashboard (5 มิติ)
+          </button>
+          <button class="btn btn-secondary" data-target-view="analysis">
+            ดูรายละเอียดการพิสูจน์ทางสถิติ
+          </button>
+          <button class="btn btn-secondary" data-target-view="recommendations">
+            ข้อเสนอแนะเชิงปฏิบัติการ
+          </button>
+        </div>
+      </div>
+
+      <!-- 4 Highlight Cards -->
+      <div class="metric-grid-4">
+        <div class="metric-card card-accent">
+          <div class="metric-num">314 <small>คน</small></div>
+          <div class="metric-label">คำตอบที่ใช้วิเคราะห์ทางสถิติ</div>
+          <p class="metric-sub">คัดกรองจาก 438 ชุดข้อมูลที่เก็บได้ ผ่านการทำความสะอาดข้อมูลอย่างเป็นระบบ 5 ขั้นตอน (Data Cleaning 5-Phase)</p>
+        </div>
+
+        <div class="metric-card card-accent">
+          <div class="metric-num">66.0<small>%</small></div>
+          <div class="metric-label">ใช้ AI เพื่อขอคำอธิบายเพิ่มเติม</div>
+          <p class="metric-sub">นักศึกษาส่วนใหญ่ใช้ AI เพื่อช่วยทำความเข้าใจเนื้อหาที่ยากและอธิบายแนวคิดต่าง ๆ มากกว่าการนำคำตอบไปใช้โดยตรง</p>
+        </div>
+
+        <div class="metric-card card-danger">
+          <div class="metric-num" style="color: var(--danger-red);">8.1<small>%</small></div>
+          <div class="metric-label">ใช้คำตอบ AI โดยแทบไม่ปรับแก้</div>
+          <p class="metric-sub punchline">นักศึกษาบางส่วนใช้คำตอบจาก AI โดยแทบไม่ปรับแก้ โดยอาจไม่ได้ผ่านการเรียบเรียงหรือปรับให้เหมาะสมกับงานของตนเอง</p>
+        </div>
+
+        
+      </div>
+
+      <div class="card" style="border-left: 6px solid var(--accent-blue);">
+        <div class="card-header">
+          <h3 class="card-title">จุดเปลี่ยนสำคัญของงานวิจัย: การแยกนัยสำคัญทางสถิติออกจากนัยสำคัญเชิงปฏิบัติ</h3>
+          <span class="card-badge badge-blue">Key Finding</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem;">
+          โดยทั่วไปอาจตั้งข้อสังเกตว่า <em>"นักศึกษาที่ใช้ AI มากขึ้นอาจมีผลการเรียนที่ดีขึ้นหรือแย่ลง"</em> อย่างไรก็ตาม งานวิจัยนี้ไม่ได้พิจารณาเพียงว่าความสัมพันธ์ดังกล่าวมีนัยสำคัญทางสถิติหรือไม่ แต่ยังตรวจสอบความสามารถในการอธิบายผลการเรียนของพฤติกรรมการใช้ AI ด้วยกระบวนการวิเคราะห์หลายขั้นตอน (EFA, Nested Model, 5-Fold Cross Validation 10 รอบ, Permutation Test 500 ครั้ง) ผลการวิเคราะห์พบว่า: <strong>พฤติกรรมการใช้ AI สัมพันธ์กับผลการเรียนจริงทางสถิติ (p &lt; 0.002) แต่ค่าความแปรปรวนที่อธิบายได้เพิ่มขึ้นนอกชุดข้อมูล (Out-of-sample &Delta;R&sup2;) มีเพียง 0.007 (0.7%) เท่านั้น</strong> ซึ่งชี้ว่าผลการเรียนของนักศึกษาขึ้นอยู่กับปัจจัยพื้นฐาน เช่น วินัย เวลาอ่านหนังสือ และการเข้าเรียนมากกว่าการใช้หรือไม่ใช้ AI
+        </p>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button class="btn btn-outline" data-target-view="insights">Insight</button>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: DASHBOARD -->
+    <section id="view-dashboard" class="page-view">
+      
+      <!-- Sticky Filter Bar -->
+      <div class="sticky-filter-bar">
+        <div class="filter-header">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+          ตัวกรองข้อมูล
+        </div>
+        
+        <div class="filter-group">
+          <label for="filter-faculty">สำนักวิชา:</label>
+          <select id="filter-faculty" class="filter-select">
+            <option value="all">ทุกสำนักวิชา (9 สำนัก)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-year">ชั้นปี:</label>
+          <select id="filter-year" class="filter-select">
+            <option value="all">ทุกชั้นปี</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-gpax">ช่วง GPAX:</label>
+          <select id="filter-gpax" class="filter-select">
+            <option value="all">ทุกช่วง GPAX (5 ช่วง)</option>
+            <option value="t1">3.25 - 4.00</option>
+            <option value="t2">2.75 - 3.24</option>
+            <option value="t3">2.50 - 2.74</option>
+            <option value="t4">2.00 - 2.49</option>
+            <option value="t5">&lt; 2.00</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-dep">ระดับการพึ่งพา AI:</label>
+          <select id="filter-dep" class="filter-select">
+            <option value="all">ทุกระดับ (1-5)</option>
+            <option value="1">1: น้อยที่สุด</option>
+            <option value="2">2: น้อย</option>
+            <option value="3">3: ปานกลาง</option>
+            <option value="4">4: มาก</option>
+            <option value="5">5: มากที่สุด</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-gender">เพศ:</label>
+          <select id="filter-gender" class="filter-select">
+            <option value="all">ทุกเพศ (ทั้งหมด)</option>
+            <option value="ชาย">ชาย</option>
+            <option value="หญิง">หญิง</option>
+            <option value="อื่น ๆ / ไม่ระบุ">อื่น ๆ / ไม่ระบุ</option>
+          </select>
+        </div>
+
+        <div class="filter-actions">
+          <span id="filtered-count" class="filter-count-badge">314 / 314 คน</span>
+          <button id="btn-reset-filters" class="btn-reset">รีเซ็ตตัวกรอง</button>
+        </div>
+      </div>
+
+      <!-- Empty State Container -->
+      <div id="dash-empty-state" class="empty-state-card">
+        <div class="empty-state-icon">🔍</div>
+        <div class="empty-state-title">ไม่พบข้อมูลตามเงื่อนไขที่เลือก</div>
+        <p class="empty-state-desc">ไม่มีนักศึกษาที่ตรงกับตัวกรองที่ท่านระบุในขณะนี้ กรุณาเปลี่ยนตัวเลือกหรือกดปุ่มรีเซ็ตเพื่อแสดงข้อมูลทั้งหมด</p>
+        <button class="btn btn-primary" onclick="App.resetFilters()">รีเซ็ตตัวกรองทั้งหมด</button>
+      </div>
+
+      <nav class="dashboard-tabs">
+        <button class="dash-tab-btn active" data-tab="overview">
+          ภาพรวมกลุ่มตัวอย่าง (Overview)
+        </button>
+        <button class="dash-tab-btn" data-tab="usage">
+          วัตถุประสงค์ & พฤติกรรมการใช้ AI (PP1)
+        </button>
+        <button class="dash-tab-btn" data-tab="dependency">
+          การพึ่งพา & การตรวจสอบคำตอบจาก AI (PP2)
+        </button>
+        <button class="dash-tab-btn" data-tab="performance">
+          ความสัมพันธ์กับผลการเรียน (PP3, 4)
+        </button>
+        <button class="dash-tab-btn" data-tab="segments">
+          พฤติกรรมการใช้ AI สำนักศาสตร์และศิลป์ดิจิทัล  (PP5)
+        </button>
+      </nav>
+
+      <!-- TAB 1: OVERVIEW -->
+      <div id="tab-overview" class="dash-tab-content active">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">สัดส่วนผู้ตอบแบบสอบถามแยกตามสำนักวิชา (9 สำนัก)</h3>
+              <span class="card-badge">n = 314</span>
+            </div>
+            <div class="chart-box" style="height: 320px;">
+              <canvas id="chart-overview-faculty"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">การกระจายตัวของผลการเรียนสะสม (Real-GPAX Histogram)</h3>
+              <span class="card-badge badge-blue">Continuous Distribution</span>
+            </div>
+            <div class="chart-box" style="height: 320px;">
+              <canvas id="chart-overview-gpax"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">สัดส่วนชั้นปีที่กำลังศึกษา</h3>
+              <span class="card-badge">ปี 1 - ปี 5 ขึ้นไป</span>
+            </div>
+            <div class="chart-box" style="height: 280px;">
+              <canvas id="chart-overview-year"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">เครื่องมือ AI ที่นักศึกษาใช้มากที่สุด (% จากผู้ตอบ)</h3>
+              <span class="card-badge badge-blue">ChatGPT & Gemini</span>
+            </div>
+            <div class="chart-box" style="height: 280px;">
+              <canvas id="chart-overview-tools"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: USAGE (PP1) -->
+      <div id="tab-usage" class="dash-tab-content">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">วัตถุประสงค์การใช้ AI (เรียงตามคะแนนเฉลี่ย 1-5)</h3>
+              <span class="card-badge badge-orange">PP1 Core</span>
+            </div>
+            <div class="chart-box" style="height: 360px;">
+              <canvas id="chart-usage-purposes"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">ระดับการใช้ AI ในรายวิชาต่าง ๆ (คะแนนเฉลี่ย 1-5)</h3>
+              <span class="card-badge badge-orange">5 กลุ่มวิชา</span>
+            </div>
+            <div class="chart-box" style="height: 360px;">
+              <canvas id="chart-usage-subjects"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Matrix: วัตถุประสงค์การใช้งาน AI &times; ช่วงผลการเรียน (GPAX Tiers)</h3>
+            <span class="card-badge badge-blue">Heatmap Matrix</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            แสดงคะแนนเฉลี่ยระดับการใช้งาน (1-5) ในแต่ละวัตถุประสงค์จำแนกตามช่วงเกรดของนักศึกษา (สีเขียว = ใช้งานสูง &ge; 4.0, สีฟ้า = ปานกลาง 3.5-3.9, สีแดง = น้อย &lt; 2.8)
+          </p>
+          <div id="usage-matrix-table-container" class="data-table-wrapper"></div>
+        </div>
+      </div>
+
+      <!-- TAB 3: DEPENDENCY (PP2) -->
+      <div id="tab-dependency" class="dash-tab-content">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">การเปรียบเทียบระดับการตรวจสอบคำตอบ vs ระดับการพึ่งพา AI</h3>
+            <span class="card-badge badge-blue">ความสัมพันธ์ที่พบ</span>
+          </div>
+          <div class="gauge-metric-container">
+            <div class="gauge-item">
+              <div class="gauge-circle">
+                <svg width="120" height="120">
+                  <circle cx="60" cy="60" r="45" stroke="#E2E8F0" stroke-width="10" fill="none"/>
+                  <circle id="gauge-verify-svg" cx="60" cy="60" r="45" stroke="#059669" stroke-width="10" fill="none" stroke-linecap="round"/>
+                </svg>
+                <div class="gauge-value" id="gauge-verify-val">4.42</div>
+              </div>
+              <div class="gauge-label">ระดับการตรวจสอบความถูกต้องเฉลี่ย</div>
+              <div class="gauge-desc">คะแนน 4.42 จาก 5 คะแนน(ระดับสูง)</div>
+            </div>
+
+            <div style="font-size: 2rem; color: var(--text-light); font-weight: 300;">vs</div>
+
+            <div class="gauge-item">
+              <div class="gauge-circle">
+                <svg width="120" height="120">
+                  <circle cx="60" cy="60" r="45" stroke="#E2E8F0" stroke-width="10" fill="none"/>
+                  <circle id="gauge-dep-svg" cx="60" cy="60" r="45" stroke="#2563EB" stroke-width="10" fill="none" stroke-linecap="round"/>
+                </svg>
+                <div class="gauge-value" id="gauge-dep-val">3.31</div>
+              </div>
+              <div class="gauge-label">ระดับการพึ่งพา AI ในการเรียนเฉลี่ย</div>
+              <div class="gauge-desc">คะแนน 3.31 จาก 5 คะแนน (ระดับปานกลาง)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">4 รูปแบบลักษณะการใช้งาน AI ของนักศึกษา</h3>
+              <span class="card-badge">Behavioral Clustering</span>
+            </div>
+            <div class="chart-box" style="height: 320px;">
+              <canvas id="chart-dep-behavior"></canvas>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Scatter Plot: การพึ่งพา AI &times; การตรวจสอบคำตอบ</h3>
+              <span class="card-badge badge-orange">สีแดง = กลุ่มเสี่ยง</span>
+            </div>
+            <div class="chart-box" style="height: 320px;">
+              <canvas id="chart-dep-scatter"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">5 มิติปัจจัยการใช้ AI ที่ได้จากการวิเคราะห์ปัจจัยเชิงสำรวจ (EFA 5 Factors Radar)</h3>
+            <span class="card-badge badge-blue">Exploratory Factor Analysis</span>
+          </div>
+          <div class="grid-2" style="align-items: center;">
+            <div class="chart-box" style="height: 340px;">
+              <canvas id="chart-dep-radar"></canvas>
+            </div>
+            <div>
+              <h4 style="font-size: 1.05rem; color: var(--primary-navy); margin-bottom: 0.75rem;">การแปลความหมาย 5 มิติปัจจัย:</h4>
+              <ul style="padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+                <li><strong>F1: Conceptual Learning (4.13):</strong> การอธิบายเนื้อหาที่ไม่เข้าใจ (คะแนนสูงสุด)</li>
+                <li><strong>F2: Procedural & Code (3.45):</strong> การช่วยแก้ไข/เขียนโค้ด และแก้ปัญหาเชิงเทคนิค</li>
+                <li><strong>F3: Language & Writing (3.28):</strong> การแปลภาษา ตรวจแก้ไวยากรณ์ และช่วยเขียนรายงาน</li>
+                <li><strong>F4: Exam Prep & Drill (3.12):</strong> การสร้างข้อสอบฝึกหัด ซ้อมตอบคำถาม และทบทวนเนื้อหาก่อนสอบ</li>
+                <li><strong>F5: Academic Planning (2.60):</strong> การจัดตารางเวลาและวางแผนการอ่านหนังสือ (คะแนนต่ำสุด)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: PERFORMANCE (PP3) -->
+      <div id="tab-performance" class="dash-tab-content">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">กระบวนการพิสูจน์สถิติ 3 ขั้นตอน (Statistical Modeling Flow)</h3>
+            <span class="card-badge badge-blue">PP3 Core</span>
+          </div>
+          <div class="flow-container">
+            <div class="flow-step">
+              <div class="flow-step-num">ขั้นตอนที่ 1</div>
+              <div class="flow-step-title">Exploratory Factor Analysis</div>
+              <div class="flow-step-desc">ลดมิติของ 9 วัตถุประสงค์การใช้งานเหลือ 5 ปัจจัยโครงสร้าง ด้วยเกณฑ์ความเหมาะสม KMO = 0.767</div>
+              <div class="flow-step-stat">KMO = 0.767 (ผ่านเกณฑ์)</div>
+            </div>
+
+            <div class="flow-arrow"></div>
+
+            <div class="flow-step">
+              <div class="flow-step-num">ขั้นตอนที่ 2</div>
+              <div class="flow-step-title">Nested Model & 5-Fold CV</div>
+              <div class="flow-step-desc">เปรียบเทียบโมเดลพื้นฐาน vs โมเดลที่เพิ่ม AI พร้อมทำ 5-Fold Cross Validation ซ้ำ 10 รอบ ป้องกัน Overfitting</div>
+              <div class="flow-step-stat">Out-of-sample &Delta;R&sup2; = +0.007</div>
+            </div>
+
+            <div class="flow-arrow"></div>
+
+            <div class="flow-step">
+              <div class="flow-step-num">ขั้นตอนที่ 3</div>
+              <div class="flow-step-title">Permutation Test (500 runs)</div>
+              <div class="flow-step-desc">สุ่มสลับป้ายชื่อข้อมูล 500 ครั้งเพื่อสร้าง Null Distribution ยืนยันว่าผลไม่ได้เกิดจากความบังเอิญ</div>
+              <div class="flow-step-stat">p-value &lt; 0.002 (มีนัยสำคัญทางสถิติ)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">การเปรียบเทียบ &Delta;R&sup2; (ขนาดอิทธิพลของการนำพฤติกรรม AI มาทำนาย GPAX)</h3>
+            <span class="card-badge badge-orange">The Practical vs Statistical Dilemma</span>
+          </div>
+
+          <div class="r2-comparison-box">
+            <div class="r2-bar-item">
+              <div class="r2-bar-header">
+                <span>1. &Delta;R&sup2; บนข้อมูลตัวอย่าง (Empirical In-Sample): รวม Overfitting</span>
+                <strong>0.122 (12.2%)</strong>
+              </div>
+              <div class="r2-bar-track">
+                <div class="r2-bar-fill" style="width: 75%; background: #94A3B8;">0.122</div>
+              </div>
+              <small style="color:var(--text-muted); font-size:0.75rem;">ดูเหมือนสูง แต่เกิดจากการจับสัญญาณรบกวน (Noise) ในชุดฝึกสอน</small>
+            </div>
+
+            <div class="r2-bar-item">
+              <div class="r2-bar-header">
+                <span>2. ค่าเฉลี่ย Null Distribution จากการสลับข้อมูล 500 ครั้ง (Permutation Null):</span>
+                <strong>0.055 (5.5%)</strong>
+              </div>
+              <div class="r2-bar-track">
+                <div class="r2-bar-fill" style="width: 45%; background: #EA580C;">0.055</div>
+              </div>
+              <small style="color:var(--text-muted); font-size:0.75rem;">ระดับความบังเอิญของข้อมูลเมื่อสุ่มอิสระ</small>
+            </div>
+
+            <div class="r2-bar-item">
+              <div class="r2-bar-header">
+                <span>3. &Delta;R&sup2; ที่เพิ่มขึ้นจริงบนข้อมูลที่ไม่เคยเห็น (Out-of-sample Cross Validation):</span>
+                <strong style="color: var(--accent-blue);">+0.007 (0.7%) ★</strong>
+              </div>
+              <div class="r2-bar-track">
+                <div class="r2-bar-fill" style="width: 14%; background: #2563EB;">+0.007</div>
+              </div>
+              <small style="color:#1E40AF; font-size:0.8rem; font-weight:600;">ค่าที่พิสูจน์แล้วว่าจริง: สัมพันธ์ทางสถิติ (p &lt; 0.002) แต่มีอิทธิพลทำนายผลการเรียนเพียง 0.7%</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">One-Way ANOVA: GPAX เฉลี่ยจริงตาม 5 ระดับการพึ่งพา AI</h3>
+              <span class="card-badge">F(4, 309) = 2.11, p = 0.08 (JASP Verified)</span>
+            </div>
+            <div class="chart-box" style="height: 280px;">
+              <canvas id="chart-perf-anova"></canvas>
+            </div>
+            <p class="chart-caption">
+              <strong>ความจริงทางสถิติ (JASP Verified):</strong> ข้อมูลไม่ได้ลดลงในลักษณะเส้นตรงตามที่คาดไว้เบื้องต้น แต่มีลักษณะเป็น <em>เส้นโค้งคว่ำ (Inverted-U)</em> โดยมีค่าเฉลี่ยสูงสุดที่ระดับ 4 (GPAX 2.94) และผลการทดสอบ F=2.11, p=0.08 ชี้ชัดว่า <strong>ไม่มีความแตกต่างอย่างมีนัยสำคัญทางสถิติ</strong>
+            </p>
+          </div>
+
+          <div class="callout-dark" style="margin: 0; display: flex; flex-direction: column; justify-content: center;">
+            <h4>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              ข้อสรุปจากข้อมูล: สัมพันธ์จริง แต่เล็กเกินกว่าจะทำนายได้
+            </h4>
+            <p>
+              แม้การทดสอบทางสถิติจะยืนยันว่านักศึกษาที่มีพฤติกรรมการใช้ AI ต่างกันมีความสัมพันธ์กับเกรดเฉลี่ยอย่างมีนัยสำคัญ ($p &lt; 0.002$) แต่เมื่อนำไปทดสอบบนชุดข้อมูลทดสอบ (Out-of-sample) พฤติกรรม AI อธิบายเกรดเพิ่มได้เพียง <strong>0.7% (+0.007)</strong> เท่านั้น
+            </p>
+            <p style="margin-top: 0.75rem; color: #93C5FD;">
+              ดังนั้นผลการเรียนไม่ได้ขึ้นอยู่กับการใช้ AI เพียงอย่างเดียว ควรพิจารณาร่วมกับบริบทและพฤติกรรมการเรียนรู้ของนักศึกษา
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: SEGMENTS (PP5) -->
+      <div id="tab-segments" class="dash-tab-content">
+        <div class="callout-info">
+          <strong>ขอบเขตการศึกษาเฉพาะกลุ่ม (Scope):</strong> เจาะลึกเฉพาะสำนักวิชาศาสตร์และศิลป์ดิจิทัล (69 คน) เพื่อเปรียบเทียบลักษณะการใช้งานระหว่าง 2 สาขาวิชาที่มีภาระงานต่างกันอย่างชัดเจน: <strong>สาขาเทคโนโลยีดิจิทัล (สายเทคนิค/โค้ดดิ้ง, n=45)</strong> vs <strong>สาขานิเทศศาสตร์ดิจิทัล (สายสร้างสรรค์/สื่อสาร, n=24)</strong>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">เปรียบเทียบค่า Median วัตถุประสงค์การใช้ AI ทั้ง 9 ด้าน</h3>
+              <span class="card-badge badge-orange">n = 69 (เทคโนฯ 45 vs นิเทศฯ 24)</span>
+            </div>
+            <div class="chart-box" style="height: 380px;">
+              <canvas id="chart-segments-comparison"></canvas>
+            </div>
+            <p class="chart-caption">
+              <strong>ข้อสังเกต (JASP Verified):</strong> สายเทคโนโลยีใช้ AI เขียนโค้ดสูงกว่าอย่างชัดเจน (Median 4 vs 3, U=273, p&lt;.001, Holm&lt;.009) และใช้เพื่ออธิบายเนื้อหาที่ไม่เข้าใจต่างกัน (p=0.007) ขณะที่การใช้แปลภาษาและค้นคว้ามีการใช้งานสูงทั้งสองกลุ่ม
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">ตารางผลการทดสอบสถิติ Mann-Whitney U Test ครบทั้ง 9 ข้อ</h3>
+              <span class="card-badge badge-blue">JASP Verified & Holm Correction</span>
+            </div>
+            <div id="segments-table-container" class="data-table-wrapper"></div>
+            <p class="chart-caption">
+              <strong>ข้อสรุป:</strong> ทดสอบครบทั้ง 9 ข้อพร้อมปรับแก้ Holm Correction พบความแตกต่างอย่างมีนัยสำคัญทางสถิติเพียงการใช้ AI เพื่อเขียน/แก้ไขโค้ด ซึ่งจากตารางเปรียบเทียบค่า Median ยืนยันว่าสาขาเทคโนโลยีดิจิทัลใช้ AI เพื่อเขียน/แก้ไขโค้ดมากกว่าสาขานิเทศศาสตร์ดิจิทัล
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: STATISTICAL ANALYSIS -->
+    <section id="view-analysis" class="page-view">
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h2 style="font-size: 1.5rem; color: var(--primary-navy);">รายละเอียดการวิเคราะห์ทางสถิติ (Methodological & Statistical Rigor)</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem;"></strong></p>
+          </div>
+          <span class="card-badge badge-blue">Research Core</span>
+        </div>
+
+        <div style="line-height: 1.8; color: var(--text-main); font-size: 0.95rem;">
+          <h3 style="color: var(--primary-navy); margin: 1.5rem 0 0.5rem;">1. การวิเคราะห์ปัจจัยเชิงสำรวจ (Exploratory Factor Analysis - EFA)</h3>
+          <p>
+            เพื่อหลีกเลี่ยงปัญหาภาวะร่วมเชิงเส้น (Multicollinearity) จากการนำตัวแปรวัตถุประสงค์ทั้ง 9 ข้อไปใส่ในสมการถดถอยพร้อมกัน ผู้วิจัยได้ทำการทดสอบ Kaiser-Meyer-Olkin (KMO) ได้ค่า <strong>0.767</strong> ซึ่งสูงกว่าเกณฑ์ขั้นต่ำ 0.60 และการทดสอบ Bartlett's Test of Sphericity มีนัยสำคัญทางสถิติ ($p &lt; 0.001$) ทำให้สามารถสกัดออกมาได้ 5 ปัจจัยโครงสร้างที่อธิบายความแปรปรวนสะสมได้กว่า 67.5%
+          </p>
+
+          <h3 style="color: var(--primary-navy); margin: 1.5rem 0 0.5rem;">2. แบบจำลองสมการถดถอยซ้อน (Nested Linear Models)</h3>
+          <p>
+            ผู้วิจัยเปรียบเทียบแบบจำลอง 2 ระดับ:
+          </p>
+          <ul style="padding-left: 1.5rem; margin-bottom: 0.75rem; color: var(--text-muted);">
+            <li><strong>Model 1 (Baseline Model):</strong> ทำนาย GPAX โดยใช้ตัวแปรประชากรศาสตร์และพฤติกรรมการเรียน (สำนักวิชา, ชั้นปี, อัตราเข้าเรียน, ชั่วโมงอ่านหนังสือ) ได้ $R^2 = 0.218$</li>
+            <li><strong>Model 2 (Full Model):</strong> เพิ่มตัวแปรพฤติกรรมการใช้ AI (ระดับการพึ่งพา, การตรวจสอบคำตอบ, 5 ปัจจัย EFA) ได้ $R^2 = 0.340$ (&Delta;R&sup2; บน Sample = 0.122)</li>
+          </ul>
+
+          <h3 style="color: var(--primary-navy); margin: 1.5rem 0 0.5rem;">3. การตรวจสอบด้วย 5-Fold Cross Validation ซ้ำ 10 รอบ</h3>
+          <p>
+            เนื่องจากค่า $R^2$ ที่เพิ่มขึ้น 0.122 ในกลุ่มตัวอย่างอาจเป็นภาพลวงตาจากการเกิด Overfitting ผู้วิจัยจึงทำ 5-Fold Cross Validation ซ้ำ 10 รอบ (รวม 50 Iterations) เพื่อวัดค่าความแม่นยำบนข้อมูลที่แบบจำลองไม่เคยเห็น ผลการทดสอบพบว่า <strong>Out-of-sample &Delta;R&sup2; ลดลงเหลือเพียง +0.007 (+0.7%)</strong> ซึ่งเป็นตัวเลขจริงที่ตัดสัญญาณรบกวนออกแล้ว
+          </p>
+
+          <h3 style="color: var(--primary-navy); margin: 1.5rem 0 0.5rem;">4. การทดสอบการสุ่มสลับ (Permutation Test 500 Iterations)</h3>
+          <p>
+            เพื่อพิสูจน์ว่าค่า $\Delta R^2 = +0.007$ ไม่ได้เกิดขึ้นโดยบังเอิญ จึงได้ทำการ Shuffle ป้ายชื่อของตัวแปรพฤติกรรม AI จำนวน 500 ครั้งเพื่อสร้าง Null Distribution ผลปรากฏว่ามีเพียง 2 ครั้งจาก 1,000 ครั้งที่ค่าจาก Null สูงกว่าค่าจริง ส่งผลให้ค่า <strong>Empirical p-value = 0.002</strong> ยืนยันว่าความสัมพันธ์นี้เป็นของจริงทางสถิติ
+          </p>
+
+          <h3 style="color: var(--primary-navy); margin: 1.5rem 0 0.5rem;">5. One-Way ANOVA และ Mann-Whitney U Test (JASP Verified)</h3>
+          <p>
+            เมื่อทดสอบความต่างของ GPAX ตาม 5 ระดับการพึ่งพา AI ด้วย One-Way ANOVA จากผลวิเคราะห์จริงใน JASP พบว่า <strong>F(4, 309) = 2.11, p = 0.08</strong> ซึ่งไม่มีนัยสำคัญทางสถิติที่ระดับ $lpha = 0.05$ ค่าเฉลี่ยไม่ได้ลดลงเป็นเส้นตรง แต่มีลักษณะเป็น <em>เส้นโค้งคว่ำ (Inverted-U Shape)</em>: ระดับ 1: 2.56 (n=11) &rarr; ระดับ 2: 2.79 (n=36) &rarr; ระดับ 3: 2.84 (n=136) &rarr; ระดับ 4: 2.94 (n=94) &rarr; ระดับ 5: 2.72 (n=37) สะท้อนว่านักศึกษาที่ใช้ AI ในระดับปานกลางถึงมากมีเกรดเฉลี่ยสูงสุด
+            <br>
+            ในขณะที่การทดสอบแบบไม่ใช้พารามิเตอร์ (Mann-Whitney U Test) ระหว่าง 2 สาขาในสำนักศาสตร์และศิลป์ดิจิทัล (=69$) ได้ทำการทดสอบครบทั้ง 9 วัตถุประสงค์และปรับแก้ Multiple Comparisons ด้วย <strong>Holm-Bonferroni Method</strong> พบความแตกต่างที่มีนัยสำคัญอย่างยิ่งในข้อเขียน/แก้ไขโค้ด ( = 273, p &lt; 0.001, Holm &lt; 0.009$) และข้ออธิบายเนื้อหา ( = 0.007$) ยืนยันสมมติฐานความต่างเชิงลักษณะงานเทคนิค vs สื่อสร้างสรรค์
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: INSIGHTS -->
+    <section id="view-insights" class="page-view">
+      <div class="card-header" style="border:none; margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-size: 1.5rem; color: var(--primary-navy);">Insight ที่สำคัญ 6 ข้อ</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;"></p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-icon">💡</div>
+        <div class="insight-content">
+          <h3>1. นักศึกษาส่วนใหญ่ใช้ AI เป็นเครื่องมือสนับสนุนการเรียนรู้มากกว่าการใช้เพื่อทำงานแทน</h3>
+          <p>
+            นักศึกษากว่า <strong>66.0%</strong> ระบุชัดเจนว่าใช้ AI เพื่อขอคำอธิบายและทำความเข้าใจเนื้อหาที่ตามไม่ทันในชั้นเรียน โดยวัตถุประสงค์ <em>"อธิบายเนื้อหาที่ไม่เข้าใจ"</em> ได้คะแนนเฉลี่ยสูงสุดถึง 4.13 จาก 5 คะแนน
+          </p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-icon" style="background:#FFE4E6; color:var(--danger-red);">⚠️</div>
+        <div class="insight-content">
+          <h3>2. 8.1% มีแนวโน้มพึ่งพาคำตอบจาก AI สูง (นำคำตอบไปใช้โดยแทบไม่ปรับแก้)</h3>
+          <p>
+            แม้กลุ่มใหญ่จะใช้เพื่อเรียนรู้ แต่มีนักศึกษาจำนวน <strong>8.1% (25 คน)</strong> ที่ยอมรับว่านำคำตอบจาก AI ไปใช้งานโดยแทบไม่แก้ไขเลย ซึ่งกลุ่มนี้สัมพันธ์กับความกังวลว่าทักษะการคิดวิเคราะห์ด้วยตนเองจะลดลง และเมื่อเจอปัญหาที่ไม่มี AI ช่วยจะแก้ปัญหาได้ยากขึ้น
+          </p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-icon" style="background:#D1FAE5; color:#059669;">🛡️</div>
+        <div class="insight-content">
+          <h3>3. นักศึกษามีการตรวจสอบความถูกต้องของคำตอบจาก AI ในระดับสูง</h3>
+          <p>
+            คะแนนเฉลี่ยในการตรวจสอบความถูกต้องของคำตอบจาก AI อยู่ที่ <strong>4.425 เต็ม 5</strong> ซึ่งสูงกว่าระดับการพึ่งพา (3.315) อย่างมาก สะท้อนว่านักศึกษาส่วนใหญ่ตระหนักดีว่า AI สามารถสร้างข้อมูลที่ผิดพลาดได้ และไม่ได้เชื่อคำตอบในทันที
+          </p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-icon">📊</div>
+        <div class="insight-content">
+          <h3>4. AI สัมพันธ์กับผลการเรียนทางสถิติ แต่ผลเชิงปฏิบัติเล็กจนแทบไม่มีผล (และ ANOVA ไม่มีนัยสำคัญ)</h3>
+          <p>
+            การรู้พฤติกรรมการใช้ AI ช่วยอธิบายผลการเรียน (GPAX) ได้เพิ่มขึ้นเพียง <strong>0.7% (&Delta;R&sup2; = +0.007)</strong> บนข้อมูลทดสอบ และผลการทดสอบ One-Way ANOVA พบว่าเกรดเฉลี่ยตามระดับการพึ่งพา AI ไม่มีความแตกต่างกันอย่างมีนัยสำคัญทางสถิติ ( = 2.11, p = 0.08$) โดยไม่ได้ลดลงเป็นเส้นตรงอย่างที่กังวล แต่มีลักษณะเป็นเส้นโค้งคว่ำ (สูงสุดที่ระดับ 4 = 2.94) ชี้ชัดว่าผลการเรียนของนักศึกษาขึ้นอยู่กับวินัยและการเรียนรู้เป็นหลัก
+          </p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-icon">💻</div>
+        <div class="insight-content">
+          <h3>5. การใช้ AI ขึ้นอยู่กับธรรมชาติของวิชาและลักษณะงาน</h3>
+          <p>
+            จากการเจาะลึก 2 สาขาวิชาในสำนักศาสตร์และศิลป์ดิจิทัล (=69$) นักศึกษาสายเทคโนโลยีใช้ AI ช่วยเขียนและตรวจแก้โค้ดสูงกว่าสายสื่อสารสร้างสรรค์อย่างมีนัยสำคัญสูงมาก ( = 273, p &lt; 0.001, Holm &lt; 0.009$) และยังพบว่าสายเทคโนโลยีใช้ AI ขอคำอธิบายเนื้อหาสูงกว่าอย่างมีนัยสำคัญ ( = 0.007$) ขณะที่งานสรุปบทเรียน แปลภาษา และค้นคว้าหาข้อมูล ทั้งสองสายใช้งานในระดับสูงใกล้เคียงกัน ชี้ชัดว่านโยบายการใช้ AI ต้องออกแบบให้สอดคล้องกับธรรมชาติของแต่ละสาขาวิชา
+          </p>
+        </div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-icon" style="background:#FEF3C7; color:#B45309;">🔄</div>
+        <div class="insight-content">
+          <h3>6. ทิศทางเชิงสาเหตุยังไม่สามารถสรุปได้ (Correlation &ne; Causation)</h3>
+          <p>
+            เนื่องจากข้อมูลที่เก็บได้สะท้อนพฤติกรรมการใช้ AI และผลการเรียนในช่วงเวลาที่ศึกษา จึงสามารถระบุได้ว่าตัวแปรทั้งสองมีความสัมพันธ์กัน แต่ไม่สามารถระบุทิศทางของเหตุและผลได้อย่างชัดเจน เช่น ไม่สามารถสรุปได้ว่าการพึ่งพา AI มากทำให้ผลการเรียนลดลง หรือผลการเรียนที่แตกต่างกันเป็นสาเหตุให้นักศึกษาพึ่งพา AI มากขึ้น
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: RECOMMENDATIONS -->
+    <section id="view-recommendations" class="page-view">
+      <div class="card-header" style="border:none; margin-bottom: 1.5rem;">
+        <div>
+          <h2 style="font-size: 1.5rem; color: var(--primary-navy);">ข้อเสนอแนะเชิงปฏิบัติการ (Practical Recommendations)</h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+      
+          </p>
+        </div>
+      </div>
+
+      <div class="rec-grid">
+        <div class="rec-card" style="border-top: 4px solid var(--danger-red);">
+          <span class="rec-badge badge-action">รับมือกลุ่มเสี่ยง 8.1%</span>
+          <h3>ปรับการประเมินเน้นที่กระบวนการคิด (Process-Based Assessment)</h3>
+          <ul>
+            <li><strong>กำหนดให้แนบ AI Prompt & Reflection:</strong> ให้นักศึกษาแสดง Prompt ที่ใช้ พร้อมอธิบายสิ่งที่ได้รับจาก AI ตรวจสอบความถูกต้อง และระบุแนวทางการปรับแก้หรือพัฒนาคำตอบด้วยตนเอง</li>
+            <li><strong>เพิ่ม Oral Defense / Random Interview:</strong> ให้นักศึกษาอธิบายแนวคิดหรือเหตุผลเบื้องหลังงานที่ส่ง เพื่อประเมินความเข้าใจในเนื้อหาและกระบวนการคิด</li>
+            <li><strong>การให้คะแนนแบบ Rubric:</strong> แบ่งเกณฑ์การให้คะแนนระหว่าง “คุณภาพของผลงาน” และ “กระบวนการคิดและความเข้าใจของนักศึกษา” เพื่อให้การประเมินสะท้อนทั้งผลลัพธ์และการเรียนรู้</li>
+          </ul>
+          <div class="rec-dept-box rec-dept-danger">
+            <div class="rec-dept-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18"/>
+                <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
+                <path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/>
+                <path d="M14 9h1"/><path d="M14 13h1"/><path d="M14 17h1"/>
+              </svg>
+            </div>
+            <div class="rec-dept-content">
+              <span class="rec-dept-label">หน่วยงานที่รับผิดชอบ</span>
+              <span class="rec-dept-name">ศูนย์นวัตกรรมและเทคโนโลยีการศึกษา (CEIT)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rec-card" style="border-top: 4px solid var(--sut-orange);">
+          <span class="rec-badge badge-action">ลดโอกาสการไม่เข้าเรียน</span>
+          <h3>เสริมบทบาทห้องเรียนด้วย Interactive Check-in</h3>
+          <ul>
+            <li><strong>Attendance Value:</strong> ออกแบบกิจกรรมที่ ไม่สามารถทดแทนได้ด้วยการอ่านสรุปหรือถาม AI เช่น การทดลอง การทำงานกลุ่ม การนำเสนอแบบทันที หรือการแก้ปัญหาจากสถานการณ์เฉพาะหน้า</li>
+            <li><strong>เปลี่ยนห้องเรียนเป็นพื้นที่ถกเถียง (Active Debate):</strong> ให้ AI ทำหน้าที่อธิบายทฤษฎีพื้นฐาน แล้วใช้เวลาในห้องเรียนมาวิเคราะห์กรณีศึกษา (Case Studies) ซักถามข้อจำกัด และทำโครงงานร่วมกัน</li>
+            <li><strong>ชี้จุดบอดของ AI ในคาบเรียน:</strong> นำตัวอย่างคำตอบที่ AI วิเคราะห์ผิดหรือมีอคติมาให้นักศึกษาช่วยกันตรวจจับในห้อง</li>
+          </ul>
+          <div class="rec-dept-box rec-dept-orange">
+            <div class="rec-dept-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18"/>
+                <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
+                <path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/>
+                <path d="M14 9h1"/><path d="M14 13h1"/><path d="M14 17h1"/>
+              </svg>
+            </div>
+            <div class="rec-dept-content">
+              <span class="rec-dept-label">หน่วยงานที่รับผิดชอบ</span>
+              <span class="rec-dept-name">ศูนย์นวัตกรรมและเทคโนโลยีการศึกษา (CEIT)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rec-card" style="border-top: 4px solid #059669;">
+          <span class="rec-badge badge-policy">นโยบายมหาวิทยาลัย</span>
+          <h3>นโยบายควรเป็นแนวทางส่งเสริมอย่างมีจริยธรรม</h3>
+          <ul>
+            <li><strong>ส่งเสริมการใช้ AI อย่างรับผิดชอบ (4.425/5):</strong> นักศึกษามีคะแนนเฉลี่ยในการตรวจสอบความถูกต้องของคำตอบจาก AI อยู่ที่ 4.425/5 สะท้อนถึงการให้ความสำคัญกับการตรวจสอบข้อมูล จึงอาจพิจารณาส่งเสริมทักษะการใช้ AI อย่างรู้เท่าทัน ควบคู่กับการกำหนดขอบเขตการใช้งานที่เหมาะสม</li>
+            <li><strong>จัดทำ AI Syllabus Statement:</strong> แต่ละรายวิชาควรกำหนดแนวทางการใช้ AI ให้ชัดเจนตามลักษณะของงาน เช่น ห้ามใช้ในบางกิจกรรม, ใช้เพื่อช่วยระดมความคิดหรือทำความเข้าใจเนื้อหา, หรือใช้โดยต้องเปิดเผยและอ้างอิงการใช้งาน เพื่อให้นักศึกษาทราบขอบเขตตั้งแต่ต้น</li>
+            <li><strong>พัฒนาทักษะ Critical AI Literacy:</strong> ส่งเสริมให้นักศึกษามีทักษะในการตั้งคำถามกับ AI ตรวจสอบความถูกต้องของข้อมูล ระบุข้อจำกัดของคำตอบ และตัดสินใจว่าควรนำผลลัพธ์จาก AI ไปใช้อย่างไรอย่างเหมาะสม</li>
+          </ul>
+          <div class="rec-dept-box rec-dept-success">
+            <div class="rec-dept-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 21h18"/>
+                <path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
+                <path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/>
+                <path d="M14 9h1"/><path d="M14 13h1"/><path d="M14 17h1"/>
+              </svg>
+            </div>
+            <div class="rec-dept-content">
+              <span class="rec-dept-label">หน่วยงานที่รับผิดชอบ</span>
+              <span class="rec-dept-name">ส่วนส่งเสริมวิชาการ และสภาวิชาการ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rec-card" style="border-top: 4px solid var(--accent-blue);">
+          <span class="rec-badge badge-future">การต่อยอดงานวิจัย</span>
+          <h3>ข้อเสนอแนะในการทำวิจัยระยะยาว (Longitudinal Study)</h3>
+          <ul>
+            <li><strong>ติดตามผลแบบพาเนล (Panel Data):</strong> ควรติดตามพฤติกรรมของนักศึกษากลุ่มเดิมตั้งแต่ปี 1 จนถึงปี 4 เพื่อแยกอิทธิพลเชิงสาเหตุ (Causal Effect) อย่างแท้จริง</li>
+            <li><strong>ขยายกลุ่มตัวอย่างให้ครอบคลุม:</strong> เพิ่มจำนวนตัวอย่างในสำนักวิชาเฉพาะทาง เช่น แพทยศาสตร์ ทันตแพทยศาสตร์ และพยาบาลศาสตร์ เพื่อให้สามารถทำการทดสอบเปรียบเทียบข้าม 9 สำนักวิชาได้อย่างสมบูรณ์</li>
+            <li><strong>วัดผลสัมฤทธิ์ในมิติอื่น:</strong> ศึกษาผลกระทบต่อทักษะการคิดเชิงสร้างสรรค์ (Creativity) และเวลาที่ประหยัดได้นอกเหนือจากตัวชี้วัด GPAX เพียงอย่างเดียว</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 6: CONTRIBUTE (QUESTIONNAIRE) -->
+    <section id="view-contribute" class="page-view">
+      <div class="card" style="margin-bottom: 1.5rem; border-left: 6px solid var(--sut-orange);">
+        <div class="card-header">
+          <div>
+            <h2 style="font-size: 1.5rem; color: var(--primary-navy);">แบบสอบถามการใช้ Generative AI กับผลสัมฤทธิ์ทางการเรียน (GPAX)</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">
+              แบบสอบถามเพื่อรวบรวมข้อมูลเพิ่มเติมสำหรับการวิจัย (ข้อมูลจะถูกจัดเก็บแยกในไฟล์ชีตชุดใหม่ ไม่ปะปนกับฐานข้อมูลเดิม 314 คน)
+            </p>
+          </div>
+          <span class="card-badge badge-orange">Contribute Form</span>
+        </div>
+      </div>
+
+      <!-- Success Notification Box -->
+      <div id="contribute-success-msg" class="callout-success" style="display: none; margin-bottom: 1.5rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="font-size: 1.75rem;">🎉</span>
+          <div>
+            <h4 style="color: #065F46; font-size: 1.1rem; margin-bottom: 0.25rem;">บันทึกข้อมูลแบบสอบถามสำเร็จแล้ว!</h4>
+            <p style="color: #047857; font-size: 0.9rem;">
+              ข้อมูลแบบสอบถามของคุณถูกบันทึกเข้าระบบเรียบร้อยแล้ว ขอขอบคุณที่ร่วมเป็นส่วนหนึ่งในการสนับสนุนข้อมูลการวิจัยของกลุ่ม 45
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Questionnaire Response Counter & Privacy Notice (No Individual Respondent Data Displayed) -->
+      <div class="card contribute-stats-card" style="margin-bottom: 1.5rem; border-left: 4px solid var(--accent-blue);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(37, 99, 235, 0.1); color: var(--accent-blue); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; flex-shrink: 0;">
+              👥
+            </div>
+            <div>
+              <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">
+                สถานะการเก็บข้อมูลแบบสอบถามเพิ่มเติม (Response Counter)
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 0.5rem; margin-top: 0.2rem;">
+                <span style="font-size: 1.05rem; font-weight: 600; color: var(--primary-navy);">มีผู้ตอบแบบสอบถามเพิ่มเติมแล้ว</span>
+                <span id="contribute-counter-number" style="font-size: 1.9rem; font-weight: 800; color: var(--sut-orange); line-height: 1;">0</span>
+                <span style="font-size: 1.05rem; font-weight: 600; color: var(--primary-navy);">คน</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <button id="btn-open-admin-export" type="button" class="btn btn-primary" style="padding: 0.55rem 1rem; font-size: 0.85rem; display: flex; align-items: center; gap: 0.4rem; background: var(--primary-navy); border-color: var(--primary-navy);">
+              🔐 ดาวน์โหลดไฟล์ชีต (เฉพาะผู้จัดทำ)
+            </button>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; padding-top: 0.85rem; border-top: 1px dashed var(--border-color); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted);">
+          <div style="display: flex; align-items: center; gap: 0.45rem;">
+            <span style="font-size: 1rem;">🛡️</span>
+            <span><strong>นโยบายความเป็นส่วนตัว (PDPA):</strong> ไม่แสดงข้อมูลคำตอบรายบุคคลต่อสาธารณะ เพื่อคุ้มครองข้อมูลส่วนบุคคลของผู้ตอบแบบสอบถาม</span>
+          </div>
+          <div id="contribute-counter-status" style="font-weight: 600; color: var(--accent-blue);">
+            พร้อมรับข้อมูลใหม่
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Questionnaire Form -->
+      <form id="contribute-form">
+        
+        <!-- SECTION 1 -->
+        <div class="card form-section-card">
+          <h3 class="form-section-title"><span class="section-num">1</span> ข้อมูลทั่วไปของผู้ตอบแบบสอบถาม</h3>
+          
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label required">เพศ</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="q_gender" value="ชาย" required> ชาย</label>
+                <label class="radio-label"><input type="radio" name="q_gender" value="หญิง"> หญิง</label>
+                <label class="radio-label"><input type="radio" name="q_gender" value="อื่น ๆ / ไม่ระบุ"> อื่น ๆ / ไม่ระบุ</label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label required">ชั้นปีที่กำลังศึกษา</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="q_year" value="ปี 1" required> ปี 1</label>
+                <label class="radio-label"><input type="radio" name="q_year" value="ปี 2"> ปี 2</label>
+                <label class="radio-label"><input type="radio" name="q_year" value="ปี 3"> ปี 3</label>
+                <label class="radio-label"><input type="radio" name="q_year" value="ปี 4"> ปี 4</label>
+                <label class="radio-label"><input type="radio" name="q_year" value="ปี 5 ขึ้นไป"> ปี 5 ขึ้นไป</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label required" for="q-student-id">รหัสนักศึกษา (Student ID)</label>
+              <input type="text" id="q-student-id" class="form-input" placeholder="เช่น B6612345" required maxlength="8">
+              <small class="form-hint">ระบบจะตรวจสอบความซ้ำซ้อนกับฐานข้อมูลเดิม 314 คน และข้อมูลที่เคยส่งในระบบ</small>
+              <div id="sid-validation-msg" class="form-feedback"></div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label required" for="q-faculty">สำนักวิชา</label>
+              <select id="q-faculty" class="form-select" required>
+                <option value="">-- กรุณาเลือกสำนักวิชา --</option>
+                <option value="วิทยาศาสตร์">สำนักวิชาวิทยาศาสตร์</option>
+                <option value="วิศวกรรมศาสตร์">สำนักวิชาวิศวกรรมศาสตร์</option>
+                <option value="เทคโนโลยีการเกษตร">สำนักวิชาเทคโนโลยีการเกษตร</option>
+                <option value="เทคโนโลยีสังคม">สำนักวิชาเทคโนโลยีสังคม</option>
+                <option value="แพทยศาสตร์">สำนักวิชาแพทยศาสตร์</option>
+                <option value="พยาบาลศาสตร์">สำนักวิชาพยาบาลศาสตร์</option>
+                <option value="ทันตแพทยศาสตร์">สำนักวิชาทันตแพทยศาสตร์</option>
+                <option value="สาธารณสุขศาสตร์">สำนักวิชาสาธารณสุขศาสตร์</option>
+                <option value="ศาสตร์และศิลป์ดิจิทัล">สำนักวิชาศาสตร์และศิลป์ดิจิทัล</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label required" for="q-major">สาขาวิชา</label>
+              <input type="text" id="q-major" class="form-input" placeholder="ระบุชื่อสาขาวิชาที่กำลังศึกษา" required>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label required" for="q-real-gpax">เกรดเฉลี่ยสะสมจริง (Real-GPAX: ทศนิยม 2 ตำแหน่ง)</label>
+              <input type="number" id="q-real-gpax" class="form-input" step="0.01" min="0.00" max="4.00" placeholder="เช่น 3.45" required>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label required">ช่วงเกรดเฉลี่ยสะสม (GPAX Tier)</label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="q_gpax_tier" value="3.25 - 4.00" required> 3.25 - 4.00</label>
+              <label class="radio-label"><input type="radio" name="q_gpax_tier" value="2.75 - 3.24"> 2.75 - 3.24</label>
+              <label class="radio-label"><input type="radio" name="q_gpax_tier" value="2.50 - 2.74"> 2.50 - 2.74</label>
+              <label class="radio-label"><input type="radio" name="q_gpax_tier" value="2.00 - 2.49"> 2.00 - 2.49</label>
+              <label class="radio-label"><input type="radio" name="q_gpax_tier" value="ต่ำกว่า 2.00"> ต่ำกว่า 2.00</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label required">อัตราการเข้าเรียนโดยเฉลี่ยในภาคการศึกษานี้</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="q_attendance" value="90-100%" required> 90-100%</label>
+                <label class="radio-label"><input type="radio" name="q_attendance" value="80-89%"> 80-89%</label>
+                <label class="radio-label"><input type="radio" name="q_attendance" value="70-79%"> 70-79%</label>
+                <label class="radio-label"><input type="radio" name="q_attendance" value="60-69%"> 60-69%</label>
+                <label class="radio-label"><input type="radio" name="q_attendance" value="ต่ำกว่า 60%"> ต่ำกว่า 60%</label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label required">ความถี่ในการเข้าเรียนสาย</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="q_late_freq" value="แทบไม่เคยสาย" required> แทบไม่เคยสาย</label>
+                <label class="radio-label"><input type="radio" name="q_late_freq" value="สายบางครั้ง (1-2 ครั้ง/เดือน)"> สายบางครั้ง (1-2 ครั้ง/เดือน)</label>
+                <label class="radio-label"><input type="radio" name="q_late_freq" value="สายบ่อย (1-2 ครั้ง/สัปดาห์)"> สายบ่อย (1-2 ครั้ง/สัปดาห์)</label>
+                <label class="radio-label"><input type="radio" name="q_late_freq" value="สายเป็นประจำ (มากกว่า 2 ครั้ง/สัปดาห์)"> สายเป็นประจำ (มากกว่า 2 ครั้ง/สัปดาห์)</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label required">จำนวนชั่วโมงเฉลี่ยที่ใช้อ่านหนังสือ/ทบทวนต่อสัปดาห์</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="q_study_hours" value="น้อยกว่า 3 ชม." required> น้อยกว่า 3 ชม.</label>
+                <label class="radio-label"><input type="radio" name="q_study_hours" value="3-6 ชม."> 3-6 ชม.</label>
+                <label class="radio-label"><input type="radio" name="q_study_hours" value="7-10 ชม."> 7-10 ชม.</label>
+                <label class="radio-label"><input type="radio" name="q_study_hours" value="11-15 ชม."> 11-15 ชม.</label>
+                <label class="radio-label"><input type="radio" name="q_study_hours" value="มากกว่า 15 ชม."> มากกว่า 15 ชม.</label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label required">จำนวนชั่วโมงเฉลี่ยที่ใช้ทำงานพิเศษ/กิจกรรมนอกหลักสูตรต่อสัปดาห์</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="q_activity_hours" value="น้อยกว่า 3 ชม." required> น้อยกว่า 3 ชม.</label>
+                <label class="radio-label"><input type="radio" name="q_activity_hours" value="3-6 ชม."> 3-6 ชม.</label>
+                <label class="radio-label"><input type="radio" name="q_activity_hours" value="7-10 ชม."> 7-10 ชม.</label>
+                <label class="radio-label"><input type="radio" name="q_activity_hours" value="11-15 ชม."> 11-15 ชม.</label>
+                <label class="radio-label"><input type="radio" name="q_activity_hours" value="มากกว่า 15 ชม."> มากกว่า 15 ชม.</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="card form-section-card">
+          <h3 class="form-section-title"><span class="section-num">2</span> พฤติกรรมการใช้เครื่องมือ Generative AI</h3>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label required">คุณเคยใช้เครื่องมือ AI เพื่อช่วยการเรียนหรือไม่</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="q_ever_used" value="เคย" required> เคย</label>
+                <label class="radio-label"><input type="radio" name="q_ever_used" value="ไม่เคย"> ไม่เคย</label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label required">เริ่มใช้ AI เพื่อการเรียนตั้งแต่เมื่อใด</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="q_start_using" value="ก่อนเข้ามหาวิทยาลัย" required> ก่อนเข้ามหาวิทยาลัย</label>
+                <label class="radio-label"><input type="radio" name="q_start_using" value="ปี 1"> ปี 1</label>
+                <label class="radio-label"><input type="radio" name="q_start_using" value="ปี 2"> ปี 2</label>
+                <label class="radio-label"><input type="radio" name="q_start_using" value="ปี 3"> ปี 3</label>
+                <label class="radio-label"><input type="radio" name="q_start_using" value="ปี 4 ขึ้นไป"> ปี 4 ขึ้นไป</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label required">ใช้ AI แบบเสียเงินหรือไม่</label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="q_is_paid" value="แบบไม่เสียเงิน" required> แบบไม่เสียเงิน (Free tier)</label>
+              <label class="radio-label"><input type="radio" name="q_is_paid" value="แบบเสียเงิน"> แบบเสียเงิน (Paid subscription)</label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">เครื่องมือ AI ที่ใช้บ่อยที่สุด (เลือกได้มากกว่า 1 ข้อ)</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="ChatGPT"> ChatGPT</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="Gemini"> Gemini</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="Claude"> Claude</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="Microsoft Copilot"> Microsoft Copilot</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="DeepSeek"> DeepSeek</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="Grammarly AI"> Grammarly AI</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="GitHub Copilot"> GitHub Copilot</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="Notebook LM"> Notebook LM</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="Kimi"> Kimi</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="Consensus"> Consensus</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_tools" value="Perplexity"> Perplexity</label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label class="form-label required">ความถี่ในการใช้ AI เพื่อการเรียน</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="q_freq" value="ทุกวัน" required> ทุกวัน</label>
+                <label class="radio-label"><input type="radio" name="q_freq" value="เกือบทุกวัน (4-6 ครั้ง/สัปดาห์)"> เกือบทุกวัน (4-6 ครั้ง/สัปดาห์)</label>
+                <label class="radio-label"><input type="radio" name="q_freq" value="บ่อยครั้ง (2-3 ครั้ง/สัปดาห์)"> บ่อยครั้ง (2-3 ครั้ง/สัปดาห์)</label>
+                <label class="radio-label"><input type="radio" name="q_freq" value="นานๆ ครั้ง (1 ครั้ง/สัปดาห์)"> นานๆ ครั้ง (1 ครั้ง/สัปดาห์)</label>
+                <label class="radio-label"><input type="radio" name="q_freq" value="น้อยกว่าสัปดาห์ละครั้ง"> น้อยกว่าสัปดาห์ละครั้ง</label>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label required">ระยะเวลาเฉลี่ยที่ใช้ AI ต่อครั้ง</label>
+              <div class="radio-group">
+                <label class="radio-label"><input type="radio" name="q_time_spent" value="น้อยกว่า 15 นาที" required> น้อยกว่า 15 นาที</label>
+                <label class="radio-label"><input type="radio" name="q_time_spent" value="15-30 นาที"> 15-30 นาที</label>
+                <label class="radio-label"><input type="radio" name="q_time_spent" value="30-60 นาที"> 30-60 นาที</label>
+                <label class="radio-label"><input type="radio" name="q_time_spent" value="มากกว่า 1 ชั่วโมง"> มากกว่า 1 ชั่วโมง</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="card form-section-card">
+          <h3 class="form-section-title"><span class="section-num">3</span> วัตถุประสงค์ในการใช้ AI เพื่อการเรียน</h3>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem;">
+            โปรดเลือกระดับการใช้งานในแต่ละด้าน (1 = ใช้น้อยที่สุด/ไม่เคยใช้, 5 = ใช้งานมากที่สุดเป็นประจำ)
+          </p>
+
+          <div class="likert-table-wrapper">
+            <table class="likert-table">
+              <thead>
+                <tr>
+                  <th style="width: 50%;">วัตถุประสงค์การใช้งาน</th>
+                  <th>1<br><small>น้อยที่สุด</small></th>
+                  <th>2<br><small>น้อย</small></th>
+                  <th>3<br><small>ปานกลาง</small></th>
+                  <th>4<br><small>มาก</small></th>
+                  <th>5<br><small>มากที่สุด</small></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1. สรุปบทเรียน / ย่อเนื้อหา</td>
+                  <td><input type="radio" name="p_summary" value="1" required></td>
+                  <td><input type="radio" name="p_summary" value="2"></td>
+                  <td><input type="radio" name="p_summary" value="3"></td>
+                  <td><input type="radio" name="p_summary" value="4"></td>
+                  <td><input type="radio" name="p_summary" value="5"></td>
+                </tr>
+                <tr>
+                  <td>2. ค้นคว้าหาข้อมูลเพิ่มเติม</td>
+                  <td><input type="radio" name="p_research" value="1" required></td>
+                  <td><input type="radio" name="p_research" value="2"></td>
+                  <td><input type="radio" name="p_research" value="3"></td>
+                  <td><input type="radio" name="p_research" value="4"></td>
+                  <td><input type="radio" name="p_research" value="5"></td>
+                </tr>
+                <tr>
+                  <td>3. อธิบายเนื้อหาที่ไม่เข้าใจ</td>
+                  <td><input type="radio" name="p_explain" value="1" required></td>
+                  <td><input type="radio" name="p_explain" value="2"></td>
+                  <td><input type="radio" name="p_explain" value="3"></td>
+                  <td><input type="radio" name="p_explain" value="4"></td>
+                  <td><input type="radio" name="p_explain" value="5"></td>
+                </tr>
+                <tr>
+                  <td>4. ช่วยทำการบ้าน / แบบฝึกหัด</td>
+                  <td><input type="radio" name="p_homework" value="1" required></td>
+                  <td><input type="radio" name="p_homework" value="2"></td>
+                  <td><input type="radio" name="p_homework" value="3"></td>
+                  <td><input type="radio" name="p_homework" value="4"></td>
+                  <td><input type="radio" name="p_homework" value="5"></td>
+                </tr>
+                <tr>
+                  <td>5. เขียน / แก้ไขโค้ด</td>
+                  <td><input type="radio" name="p_code" value="1" required></td>
+                  <td><input type="radio" name="p_code" value="2"></td>
+                  <td><input type="radio" name="p_code" value="3"></td>
+                  <td><input type="radio" name="p_code" value="4"></td>
+                  <td><input type="radio" name="p_code" value="5"></td>
+                </tr>
+                <tr>
+                  <td>6. แปลภาษา / ตรวจไวยากรณ์</td>
+                  <td><input type="radio" name="p_translate" value="1" required></td>
+                  <td><input type="radio" name="p_translate" value="2"></td>
+                  <td><input type="radio" name="p_translate" value="3"></td>
+                  <td><input type="radio" name="p_translate" value="4"></td>
+                  <td><input type="radio" name="p_translate" value="5"></td>
+                </tr>
+                <tr>
+                  <td>7. เตรียมสอบ / สร้างข้อสอบฝึกหัด</td>
+                  <td><input type="radio" name="p_exam" value="1" required></td>
+                  <td><input type="radio" name="p_exam" value="2"></td>
+                  <td><input type="radio" name="p_exam" value="3"></td>
+                  <td><input type="radio" name="p_exam" value="4"></td>
+                  <td><input type="radio" name="p_exam" value="5"></td>
+                </tr>
+                <tr>
+                  <td>8. เขียนรายงาน / เรียงความ</td>
+                  <td><input type="radio" name="p_report" value="1" required></td>
+                  <td><input type="radio" name="p_report" value="2"></td>
+                  <td><input type="radio" name="p_report" value="3"></td>
+                  <td><input type="radio" name="p_report" value="4"></td>
+                  <td><input type="radio" name="p_report" value="5"></td>
+                </tr>
+                <tr>
+                  <td>9. วางแผนการอ่านหนังสือ / จัดตารางเรียน</td>
+                  <td><input type="radio" name="p_plan" value="1" required></td>
+                  <td><input type="radio" name="p_plan" value="2"></td>
+                  <td><input type="radio" name="p_plan" value="3"></td>
+                  <td><input type="radio" name="p_plan" value="4"></td>
+                  <td><input type="radio" name="p_plan" value="5"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- SECTION 4 -->
+        <div class="card form-section-card">
+          <h3 class="form-section-title"><span class="section-num">4</span> ลักษณะการใช้งานและรายวิชาที่ใช้ AI</h3>
+
+          <div class="form-field">
+            <label class="form-label required">ลักษณะการใช้งาน AI ที่ตรงกับพฤติกรรมท่านมากที่สุด</label>
+            <div class="radio-vertical-list">
+              <label class="radio-card-label">
+                <input type="radio" name="q_behavior" value="ใช้ AI เพื่อขอคำอธิบายเพิ่มเติม ทำความเข้าใจ ไม่ใช่เอาคำตอบ" required>
+                <div>
+                  <strong>ใช้ AI เพื่อขอคำอธิบายเพิ่มเติม ทำความเข้าใจ ไม่ใช่เอาคำตอบ</strong>
+                  <p>ใช้เพื่อช่วยทำความเข้าใจแนวคิดที่ยาก โดยไม่ได้นำผลลัพธ์ไปส่งหรือใช้ตรงๆ</p>
+                </div>
+              </label>
+              <label class="radio-card-label">
+                <input type="radio" name="q_behavior" value="ใช้ AI ตรวจทานคำตอบที่ตนเองทำ">
+                <div>
+                  <strong>ใช้ AI ตรวจทานคำตอบที่ตนเองทำ</strong>
+                  <p>ทำงานด้วยตนเองก่อน แล้วจึงใช้ AI ตรวจสอบความถูกต้องหรือหาจุดบกพร่อง</p>
+                </div>
+              </label>
+              <label class="radio-card-label">
+                <input type="radio" name="q_behavior" value="ใช้ AI เพื่อพูดคุยพัฒนาความคิด">
+                <div>
+                  <strong>ใช้ AI เพื่อพูดคุยพัฒนาความคิด</strong>
+                  <p>ใช้พูดคุย ระดมไอเดีย หรือแลกเปลี่ยนมุมมองเพื่อต่อยอดความคิดของตนเอง</p>
+                </div>
+              </label>
+              <label class="radio-card-label">
+                <input type="radio" name="q_behavior" value="ใช้ AI สร้างคำตอบแล้วนำไปใช้โดยแทบไม่ปรับแก้">
+                <div>
+                  <strong style="color: var(--danger-red);">ใช้ AI สร้างคำตอบแล้วนำไปใช้โดยแทบไม่ปรับแก้</strong>
+                  <p>ป้อนโจทย์และนำคำตอบที่ได้จาก AI ไปใช้งานหรือส่งงานทันทีโดยแทบไม่แก้ไข</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label required">มีการตรวจสอบความถูกต้องของคำตอบจาก AI หรือไม่</label>
+            <div class="likert-table-wrapper">
+              <table class="likert-table">
+                <thead>
+                  <tr>
+                    <th>1 (ไม่เคยตรวจเลย)</th>
+                    <th>2 (นานๆ ครั้ง)</th>
+                    <th>3 (ตรวจสอบบางครั้ง)</th>
+                    <th>4 (ตรวจสอบบ่อยครั้ง)</th>
+                    <th>5 (ตรวจสอบทุกครั้ง)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="radio" name="q_verification" value="1" required></td>
+                    <td><input type="radio" name="q_verification" value="2"></td>
+                    <td><input type="radio" name="q_verification" value="3"></td>
+                    <td><input type="radio" name="q_verification" value="4"></td>
+                    <td><input type="radio" name="q_verification" value="5"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label required">วิชา/กลุ่มวิชาที่คุณใช้ AI ช่วยเรียนมากที่สุด (1 = ใช้น้อยที่สุด, 5 = ใช้มากที่สุด)</label>
+            <div class="likert-table-wrapper">
+              <table class="likert-table">
+                <thead>
+                  <tr>
+                    <th style="width: 50%;">กลุ่มวิชา</th>
+                    <th>1<br><small>น้อยที่สุด</small></th>
+                    <th>2<br><small>น้อย</small></th>
+                    <th>3<br><small>ปานกลาง</small></th>
+                    <th>4<br><small>มาก</small></th>
+                    <th>5<br><small>มากที่สุด</small></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1. วิชาพื้นฐาน (คณิตศาสตร์ ฟิสิกส์ เคมี)</td>
+                    <td><input type="radio" name="s_basic" value="1" required></td>
+                    <td><input type="radio" name="s_basic" value="2"></td>
+                    <td><input type="radio" name="s_basic" value="3"></td>
+                    <td><input type="radio" name="s_basic" value="4"></td>
+                    <td><input type="radio" name="s_basic" value="5"></td>
+                  </tr>
+                  <tr>
+                    <td>2. วิชาเขียนโปรแกรม</td>
+                    <td><input type="radio" name="s_prog" value="1" required></td>
+                    <td><input type="radio" name="s_prog" value="2"></td>
+                    <td><input type="radio" name="s_prog" value="3"></td>
+                    <td><input type="radio" name="s_prog" value="4"></td>
+                    <td><input type="radio" name="s_prog" value="5"></td>
+                  </tr>
+                  <tr>
+                    <td>3. วิชาเขียนรายงาน / เรียงความ</td>
+                    <td><input type="radio" name="s_report" value="1" required></td>
+                    <td><input type="radio" name="s_report" value="2"></td>
+                    <td><input type="radio" name="s_report" value="3"></td>
+                    <td><input type="radio" name="s_report" value="4"></td>
+                    <td><input type="radio" name="s_report" value="5"></td>
+                  </tr>
+                  <tr>
+                    <td>4. วิชาภาษาต่างประเทศ</td>
+                    <td><input type="radio" name="s_lang" value="1" required></td>
+                    <td><input type="radio" name="s_lang" value="2"></td>
+                    <td><input type="radio" name="s_lang" value="3"></td>
+                    <td><input type="radio" name="s_lang" value="4"></td>
+                    <td><input type="radio" name="s_lang" value="5"></td>
+                  </tr>
+                  <tr>
+                    <td>5. วิชาเฉพาะสาขา</td>
+                    <td><input type="radio" name="s_major" value="1" required></td>
+                    <td><input type="radio" name="s_major" value="2"></td>
+                    <td><input type="radio" name="s_major" value="3"></td>
+                    <td><input type="radio" name="s_major" value="4"></td>
+                    <td><input type="radio" name="s_major" value="5"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 5 -->
+        <div class="card form-section-card">
+          <h3 class="form-section-title"><span class="section-num">5</span> ระดับการพึ่งพาและทัศนคติต่อผลการเรียน</h3>
+
+          <div class="form-field">
+            <label class="form-label required">ระดับการพึ่งพา AI ในการเรียนโดยรวม</label>
+            <div class="likert-table-wrapper">
+              <table class="likert-table">
+                <thead>
+                  <tr>
+                    <th>1 (น้อยที่สุด)</th>
+                    <th>2 (น้อย)</th>
+                    <th>3 (ปานกลาง)</th>
+                    <th>4 (มาก)</th>
+                    <th>5 (มากที่สุด)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="radio" name="q_dependency" value="1" required></td>
+                    <td><input type="radio" name="q_dependency" value="2"></td>
+                    <td><input type="radio" name="q_dependency" value="3"></td>
+                    <td><input type="radio" name="q_dependency" value="4"></td>
+                    <td><input type="radio" name="q_dependency" value="5"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label required">เมื่อไม่ได้เข้าเรียนในห้อง ท่านมักทำอย่างไร</label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="q_miss_class" value="ดูคลิปย้อนหลัง (ถ้ามี)" required> ดูคลิปย้อนหลัง (ถ้ามี)</label>
+              <label class="radio-label"><input type="radio" name="q_miss_class" value="อ่าน slide/เอกสารประกอบการสอนเอง"> อ่าน slide/เอกสารประกอบการสอนเอง</label>
+              <label class="radio-label"><input type="radio" name="q_miss_class" value="ถามเพื่อนหรืออาจารย์ผู้สอน"> ถามเพื่อนหรืออาจารย์ผู้สอน</label>
+              <label class="radio-label"><input type="radio" name="q_miss_class" value="ใช้ AI ช่วยสรุปเนื้อหาให้"> ใช้ AI ช่วยสรุปเนื้อหาให้</label>
+              <label class="radio-label"><input type="radio" name="q_miss_class" value="ไม่ได้ติดตามเนื้อหาที่พลาดไป"> ไม่ได้ติดตามเนื้อหาที่พลาดไป</label>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label required">ความคิดเห็นและทัศนคติ (1 = ไม่เห็นด้วยอย่างยิ่ง, 5 = เห็นด้วยอย่างยิ่ง)</label>
+            <div class="likert-table-wrapper">
+              <table class="likert-table">
+                <thead>
+                  <tr>
+                    <th style="width: 50%;">ข้อความ</th>
+                    <th>1<br><small>ไม่เห็นด้วยอย่างยิ่ง</small></th>
+                    <th>2<br><small>ไม่เห็นด้วย</small></th>
+                    <th>3<br><small>ปานกลาง</small></th>
+                    <th>4<br><small>เห็นด้วย</small></th>
+                    <th>5<br><small>เห็นด้วยอย่างยิ่ง</small></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1. การใช้ AI ทำให้ฉันคิดวิเคราะห์ด้วยตนเองน้อยลง</td>
+                    <td><input type="radio" name="q_critical_less" value="1" required></td>
+                    <td><input type="radio" name="q_critical_less" value="2"></td>
+                    <td><input type="radio" name="q_critical_less" value="3"></td>
+                    <td><input type="radio" name="q_critical_less" value="4"></td>
+                    <td><input type="radio" name="q_critical_less" value="5"></td>
+                  </tr>
+                  <tr>
+                    <td>2. ฉันรู้สึกกังวลว่าการใช้ AI มากเกินไปจะกระทบทักษะการเรียนรู้ระยะยาวของฉัน</td>
+                    <td><input type="radio" name="q_longterm_worry" value="1" required></td>
+                    <td><input type="radio" name="q_longterm_worry" value="2"></td>
+                    <td><input type="radio" name="q_longterm_worry" value="3"></td>
+                    <td><input type="radio" name="q_longterm_worry" value="4"></td>
+                    <td><input type="radio" name="q_longterm_worry" value="5"></td>
+                  </tr>
+                  <tr>
+                    <td>3. ฉันรู้สึกว่าการตัดสินใจ/แก้ปัญหาด้วยตนเองยากขึ้นเมื่อไม่มี AI ให้ใช้</td>
+                    <td><input type="radio" name="q_decision_harder" value="1" required></td>
+                    <td><input type="radio" name="q_decision_harder" value="2"></td>
+                    <td><input type="radio" name="q_decision_harder" value="3"></td>
+                    <td><input type="radio" name="q_decision_harder" value="4"></td>
+                    <td><input type="radio" name="q_decision_harder" value="5"></td>
+                  </tr>
+                  <tr>
+                    <td>4. ฉันรู้สึกว่าการมี AI ช่วยอธิบาย/สรุปเนื้อหาทำให้รู้สึกว่าการเข้าเรียนมีความจำเป็นน้อยลง</td>
+                    <td><input type="radio" name="q_skip_class" value="1" required></td>
+                    <td><input type="radio" name="q_skip_class" value="2"></td>
+                    <td><input type="radio" name="q_skip_class" value="3"></td>
+                    <td><input type="radio" name="q_skip_class" value="4"></td>
+                    <td><input type="radio" name="q_skip_class" value="5"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">เหตุผลที่ไม่ใช้ AI ในการเรียน (ถ้ามี / เลือกได้มากกว่า 1 ข้อ)</label>
+            <div class="checkbox-grid">
+              <label class="checkbox-label"><input type="checkbox" name="q_reasons_not_use" value="ไม่มีความรู้ในการใช้งาน"> ไม่มีความรู้ในการใช้งาน</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_reasons_not_use" value="กังวลเรื่องความถูกต้อง"> กังวลเรื่องความถูกต้อง</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_reasons_not_use" value="ไม่เห็นความจำเป็น"> ไม่เห็นความจำเป็น</label>
+              <label class="checkbox-label"><input type="checkbox" name="q_reasons_not_use" value="กังวลเรื่องจริยธรรม/การทุจริต"> กังวลเรื่องจริยธรรม/การทุจริต</label>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.95rem 1.5rem; font-size: 1.1rem; font-weight: 700; border-radius: var(--radius-md); box-shadow: var(--shadow-md);">
+              🚀 ส่งข้อมูลแบบสอบถาม (บันทึกเข้าไฟล์ชีตใหม่)
+            </button>
+          </div>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- VIEW 7: ABOUT -->
+    <section id="view-about" class="page-view">
+      <div class="card">
+        <div class="card-header">
+          <h2 style="font-size: 1.5rem; color: var(--primary-navy);">ที่มาและวัตถุประสงค์โครงการ (Project Background & Analytics Canvas)</h2>
+          <span class="card-badge badge-blue">Group 45 มทส.</span>
+        </div>
+
+        <h3 style="color: var(--primary-navy); margin: 1rem 0 0.5rem;">ที่มาและความสำคัญ</h3>
+        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem;">
+          การเติบโตอย่างก้าวกระโดดของ Generative AI ก่อให้เกิดทั้งโอกาสและความวิตกกังวลในแวดวงการศึกษาระดับอุดมศึกษา อาจารย์ผู้สอนจำนวนมากตั้งคำถามว่า นักศึกษากำลังใช้ AI เพื่อเรียนรู้จริงหรือเพียงเพื่อหาคำตอบสำเร็จรูป และสิ่งนี้ส่งผลกระทบต่อผลสัมฤทธิ์ทางการเรียน (GPAX) อย่างไร โครงการวิจัยกลุ่ม 45 จึงริเริ่มขึ้นเพื่อเก็บรวบรวมข้อมูลเชิงประจักษ์จากนักศึกษามหาวิทยาลัยเทคโนโลยีสุรนารี และนำสถิติขั้นสูงมาตอบคำถามอย่างเป็นกลาง ปราศจากอคติ
+        </p>
+
+        <h3 style="color: var(--primary-navy); margin: 1.5rem 0 0.5rem;">Analytics Canvas</h3>
+        <div class="grid-3" style="margin-top: 1rem;">
+          <div style="background: var(--bg-card-subtle); padding: 1.25rem; border-radius: var(--radius-md);">
+            <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">1. Business / Academic Problem</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              ความคลุมเครือว่าการใช้ AI ส่งผลดีหรือร้ายต่อเกรดของนักศึกษา และอาจารย์จะปรับเกณฑ์การวัดประเมินผลความเข้าใจจริงได้อย่างไร
+            </p>
+          </div>
+
+          <div style="background: var(--bg-card-subtle); padding: 1.25rem; border-radius: var(--radius-md);">
+            <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">2. Analytics Objectives</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              วิเคราะห์รูปแบบการพึ่งพา AI สกัดปัจจัยโครงสร้างด้วย EFA ทดสอบนัยสำคัญแท้จริงด้วย Permutation และแยกผลสถิติออกจากผลเชิงปฏิบัติ
+            </p>
+          </div>
+
+          <div style="background: var(--bg-card-subtle); padding: 1.25rem; border-radius: var(--radius-md);">
+            <h4 style="color: var(--primary-navy); margin-bottom: 0.5rem;">3. Data & Techniques</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              ชุดข้อมูลแบบสอบถาม 314 รายการ, EFA (KMO 0.767), Nested Regressions, 5-Fold Cross Validation &times; 10, Permutation Test (500 ครั้ง), Mann-Whitney U + Holm
+            </p>
+          </div>
+        </div>
+
+        <h3 style="color: var(--primary-navy); margin: 1.5rem 0 0.5rem;">User Personas</h3>
+        <div class="grid-2" style="margin-top: 1rem;">
+          <div style="border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-md);">
+            <h4 style="color: var(--primary-navy); margin-bottom: 0.35rem;">Persona 1: The Active Inquirer (66.0%)</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              ใช้ AI เหมือนติวเตอร์ส่วนตัว ป้อนคำถามเมื่อไม่เข้าใจบทเรียน ตรวจทานสิ่งที่ตนเองทำ (คะแนนตรวจสอบ 4.425) และนำคำตอบมาคิดต่อยอดเพื่อเพิ่มความเข้าใจ
+            </p>
+          </div>
+
+          <div style="border: 1px solid var(--border-color); padding: 1.25rem; border-radius: var(--radius-md);">
+            <h4 style="color: var(--danger-red); margin-bottom: 0.35rem;">Persona 2: The Passive Dependent (8.1%)</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+              ส่งคำสั่งเพื่อให้ได้งานเสร็จโดยเร็ว นำคำตอบส่งโดยไม่ตรวจสอบและแทบไม่แก้ไข มีความวิตกกังวลต่อการคิดวิเคราะห์ด้วยตนเองเมื่อไม่มี AI ช่วย
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color); font-size: 0.85rem; color: var(--text-muted);">
+          <strong>คณะผู้จัดทำ:</strong> นักศึกษากลุ่ม 45 รายวิชาการวิเคราะห์ข้อมูล มหาวิทยาลัยเทคโนโลยีสุรนารี (มทส.) ประจำปีการศึกษา 2568-2569
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div>
+        <strong>Group 45 - การศึกษาความสัมพันธ์ระหว่างการใช้ AI กับผลสัมฤทธิ์ทางการเรียน มทส.</strong>
+        <p style="font-size: 0.8rem; margin-top: 0.25rem;">มหาวิทยาลัยเทคโนโลยีสุรนารี (Suranaree University of Technology)</p>
+      </div>
+      <div style="font-size: 0.8rem;">
+        Data Sanitized & Anonymized &bull; Rigorous Statistical Analysis &bull; Interactive Dashboard
+      </div>
+    </div>
+  </footer>
+
+  <!-- Admin Passcode Modal for Dataset Export -->
+  <div id="admin-auth-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.6rem;">
+          <span style="font-size: 1.3rem;">🔐</span>
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--primary-navy); margin: 0;">ยืนยันสิทธิ์ผู้จัดทำโครงงาน (Admin)</h3>
+        </div>
+        <button id="btn-close-admin-modal" class="modal-close-btn" type="button" aria-label="ปิด">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1.25rem;">
+          การเข้าถึงและดาวน์โหลดชุดข้อมูลคำตอบสงวนสิทธิ์เฉพาะ<strong>คณะผู้จัดทำโครงงาน (กลุ่ม 45)</strong> เท่านั้น เพื่อคุ้มครองข้อมูลส่วนบุคคล กรุณากรอกรหัสผ่านเพื่อดำเนินการ
+        </p>
+
+        <form id="admin-auth-form" onsubmit="return false;">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label for="admin-passcode-input" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--primary-navy);">
+              รหัสผ่านผู้จัดทำ (Admin Passcode)
+            </label>
+            <div style="position: relative;">
+              <input type="password" id="admin-passcode-input" class="form-control" placeholder="กรอกรหัสผ่าน เช่น group45" autocomplete="current-password" style="padding-right: 2.5rem; width: 100%;">
+              <button type="button" id="btn-toggle-passcode" title="แสดง/ซ่อนรหัสผ่าน" style="position: absolute; right: 0.6rem; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 1rem; padding: 0.2rem;">👁️</button>
+            </div>
+            <div id="admin-auth-error" class="form-feedback error" style="margin-top: 0.45rem; display: none;"></div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; gap: 0.75rem; flex-wrap: wrap;">
+            <button id="btn-admin-clear-data" type="button" class="btn btn-outline" style="font-size: 0.8rem; color: var(--danger-red); border-color: #FECDD3; padding: 0.45rem 0.75rem;">
+              🗑️ ล้างข้อมูลในเครื่อง
+            </button>
+            <div style="display: flex; gap: 0.5rem;">
+              <button id="btn-cancel-admin-modal" type="button" class="btn btn-outline" style="padding: 0.5rem 1rem;">ยกเลิก</button>
+              <button id="btn-submit-admin-modal" type="button" class="btn btn-primary" style="padding: 0.5rem 1.25rem; background: var(--accent-blue); border-color: var(--accent-blue);">
+                📥 ดาวน์โหลด .CSV
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
